@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Confirm the Listing you just added</title>
+</head>
+<body>
+    <h1 th:inline="text">Confirmation:        [[${aHouse.rented}]]</h1>
+
+    <div th:if="[[${aHouse.rented}]] == true">
+        <h1>Confirmation: Avalible</h1>
+    </div>
+    <div th:if="[[${aHouse.rented}]] == false">
+        <h1>Confirmation: Not Avalible</h1>
+    </div>
+
+    <h2>Description</h2>
+    <p th:inline="text">[[${aHouse.description}]]</p>
+    <h2>Rules</h2>
+    <p th:inline="text">[[${aHouse.rules}]]</p>
+    <h2>Amenities</h2>
+    <p th:inline="text">Wifi: [[${aHouse.wifi}]] | Cable: [[${aHouse.cable}]] </p>
+    <p th:inline="text">Private Bathroom: [[${aHouse.bathroom}]]</p>
+    <hr></hr>
+
+</body>
+</html>
