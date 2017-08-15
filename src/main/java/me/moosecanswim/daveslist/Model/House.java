@@ -12,22 +12,22 @@ public class House {
     @Id
     private long id;
     private String description;
-    private Boolean wifi;  //yes == true no == false
+    private String wifi;  //yes == true no == false
     private String rules;
     private String cable;
-    private Boolean bathroom;
-    private Boolean rented;
+    private String bathroom;
+    private String rented;
 
     public long getId() {
         return id;
     }
 
 
-    public Boolean getRented() {
+    public String getRented() {
         return rented;
     }
 
-    public void setRented(Boolean rented) {
+    public void setRented(String rented) {
         this.rented = rented;
     }
 
@@ -41,13 +41,7 @@ public class House {
         this.description = description;
     }
 
-    public Boolean getWifi() {
-        return wifi;
-    }
 
-    public void setWifi(Boolean wifi) {
-        this.wifi = wifi;
-    }
 
     public String getRules() {
         return rules;
@@ -65,13 +59,20 @@ public class House {
         this.cable = cable;
     }
 
-    public Boolean getBathroom() {
+
+    public String getWifi() {
+        return wifi;
+    }
+
+    public void setWifi(String wifi) {
+        this.wifi = wifi;
+    }
+
+    public String getBathroom() {
         return bathroom;
     }
 
-    public void setBathroom(Boolean bathroom) {
+    public void setBathroom(String bathroom) {
         this.bathroom = bathroom;
     }
-
-
 }

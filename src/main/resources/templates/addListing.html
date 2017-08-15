@@ -14,12 +14,15 @@
                 method="post">
             <ul>
                 <label for="descriptionTextArea">D3scription: </label>
-                <textarea id="descriptionTextArea" cols="50" rows="4" maxlength="140" placeholder="Enter Description Here" th:field="*{description}"/>
+                <textarea id="descriptionTextArea" cols="50" rows="2" maxlength="140" placeholder="Enter Description Here" th:field="*{description}"/>
                 <span th:if="${#fields.hasErrors('description')}"
                       th:errors="*{description}"></span><br />
             </ul>
             <ul>
-                Has Wifi: <Input type="checkbox" th:field="*{wifi}"/>
+                Has Wifi: <select th:field="*{wifi}">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            </select>
             </ul>
 
             <ul>
@@ -36,10 +39,17 @@
                         </select>
             </ul>
             <ul>
-                Private Bathroom:<Input type="checkbox" th:field="*{bathroom}"/>
+                Private Bathroom:<select th:field="*{bathroom}">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            </select>
             </ul>
             <ul>
-                <h3>Is Avalible for rent:<input type="checkbox" th:field="*{rented}"/></h3>
+                <h3>Is Avalible for rent:<select th:field="*{rented}">
+                            <option value="Avalible">Avalible</option>
+                            <option value="Unavalible">Unavalible</option>
+                            </select>
+                </h3>
             </ul>
 
 
