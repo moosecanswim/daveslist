@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 @Entity
 public class House {
+
+
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Id
     private long id;
@@ -31,7 +33,9 @@ public class House {
         this.rented = rented;
     }
 
-
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getDescription() {
         return description;

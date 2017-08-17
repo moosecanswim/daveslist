@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -25,36 +23,47 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("/addListing")
+    @RequestMapping("/add")
     public String addListingGet(Model toSend){
-        ArrayList<String> forAvalability = new ArrayList<String>();
-        forAvalability.add("Avalible");forAvalability.add("Unavalible");
-
-
+        toSend.addAttribute("isNew",true);
         toSend.addAttribute("aHouse", new House());
-        toSend.addAttribute("avalibleList", forAvalability);
-        return "addListing";
+        return "listingForm";
     }
-    @PostMapping("/addListing")
-    public String addListingPost(@Valid @ModelAttribute("aHouse") House aHouse, BindingResult result){
-        System.out.println(result.toString());
+    @RequestMapping("/process/{id}")
+    public String processListing(@PathVariable("id") long id,@Valid House aHouse, BindingResult result){
         if(result.hasErrors()){
-            return "addListing";
+            return "listingForm";
         }
-
         houseRepository.save(aHouse);
-        return "addListingConfirm";
+        return "redirect:/showListings";
     }
 
-    @GetMapping("/showListings")
-    public String showListingGet(){
 
-        return "showListing";
-    }
-    @PostMapping("/showLIstings")
-    public String showListingPost(){
+    @RequestMapping("/showListings")
+    public String showListingGet(Model model){
+        Iterable<House> tempFindAll = houseRepository.findAll();
+        model.addAttribute("allListings",tempFindAll);
 
-        return "showListing";
+        Iterable<House> tempFindAvalible = houseRepository.findByRented("Avalible");
+        model.addAttribute("avalibleListings",tempFindAvalible);
+
+        Iterable<House> tempFindUnavalible = houseRepository.findByRented("Unavalible");
+        model.addAttribute("unavalibleListings",tempFindUnavalible);
+        return "showListings";
     }
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable("id") long id){
+        houseRepository.delete(id);
+        return "redirect:/showListings";
+    }
+    @RequestMapping("/update/{id}")
+    public String update(@PathVariable("id") long id,Model model){
+        model.addAttribute("isNew",false);
+        model.addAttribute("aHouse",houseRepository.findOne(id));
+        return "listingForm";
+    }
+
+
+
 
 }

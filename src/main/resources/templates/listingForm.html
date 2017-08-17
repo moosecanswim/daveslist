@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Add Listings</title>
+</head>
+<body>
+    <h1 th:if="${isNew}? 'Add Listing':'Update Listing'"></h1>
+
+    <h1>Add Listing</h1>
+    <form action="#"
+
+          th:action="@{/process/{id} (id=${aHouse.id})}"
+          th:object="${aHouse}"
+    >
+
+        <!--hidden id input-->
+        <input type="hidden" th:field="*{id}"/>
+
+        <ul>
+            <label for="descriptionTextArea">D3scription: </label>
+            <textarea id="descriptionTextArea" cols="50" rows="2" maxlength="140" th:field="*{description}"/>
+            <span th:if="${#fields.hasErrors('description')}"
+                  th:errors="*{description}"></span><br />
+        </ul>
+        <ul>
+            Has Wifi: <select th:field="*{wifi}">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        </ul>
+
+        <ul>
+            <label for="rulesTextArea">Ru1es: </label>
+            <textarea id="rulesTextArea" cols="50" rows="4"  th:field="*{rules}"/>
+            <span th:if="${#fields.hasErrors('rules')}"
+                  th:errors="*{rules}"></span><br />
+        </ul>
+        <ul>
+            Cable: <select th:field="*{cable}">
+            <option value="None">None</option>
+            <option value="Basic">Basic</option>
+            <option value="Premium">Premium</option>
+        </select>
+        </ul>
+        <ul>
+            Private Bathroom:<select th:field="*{bathroom}">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
+        </ul>
+        <ul>
+            <h3>Is Avalible for rent:<select th:field="*{rented}">
+                <option value="Avalible">Avalible</option>
+                <option value="Unavalible">Unavalible</option>
+            </select>
+            </h3>
+        </ul>
+
+
+        <Input type="submit" value="Continue"/><Input type="reset" value="Clear Form"/>
+    </form>
+
+
+</body>
+</html>

@@ -5,6 +5,87 @@
     <title>Show Listings</title>
 </head>
 <body>
-    
+    <h2>All listings</h2>
+    <table border="1">
+
+        <th><strong>ID</strong></th>
+        <th><strong>Description</strong></th>
+        <th><strong>Wifi</strong></th>
+        <th><strong>Cable</strong></th>
+        <th><strong>Bathroom</strong></th>
+        <th><strong>Status</strong></th>
+        <th><strong>Rules</strong></th>
+        <th><strong>Action</strong></th>
+
+        <tr th:each="i:${allListings}">
+            <td th:text="${i.id}"></td>
+            <td th:text="${i.description}"></td>
+            <td th:text="${i.wifi}"></td>
+            <td th:text="${i.cable}"></td>
+            <td th:text="${i.bathroom}"></td>
+            <td th:text="${i.rented}"></td>
+            <td th:text="${i.rules}"></td>
+
+            <td>
+                <a th:href="@{/update/{id} (id=${i.id})}">Update</a> - <a th:href="@{/delete/{id} (id=${i.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+
+<h2>Avalible Homes</h2>
+
+    <table border="1">
+        <th><strong>ID</strong></th>
+        <th><strong>Description</strong></th>
+        <th><strong>Wifi</strong></th>
+        <th><strong>Cable</strong></th>
+        <th><strong>Bathroom</strong></th>
+        <th><strong>Status</strong></th>
+        <th><strong>Rules</strong></th>
+        <th><strong>Action</strong></th>
+        <tr th:each="i:${avalibleListings}">
+            <td th:text="${i.id}"></td>
+            <td th:text="${i.description}"></td>
+            <td th:text="${i.wifi}"></td>
+            <td th:text="${i.cable}"></td>
+            <td th:text="${i.bathroom}"></td>
+            <td th:text="${i.rented}"></td>
+            <td th:text="${i.rules}"></td>
+            <td>
+                <a th:href="@{/update/{id} (id=${i.id})}">Update</a> - <a th:href="@{/delete/{id} (id=${i.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Unavalible Homes</h2>
+
+    <table border="1">
+        <th><strong>ID</strong></th>
+        <th><strong>Description</strong></th>
+        <th><strong>Wifi</strong></th>
+        <th><strong>Cable</strong></th>
+        <th><strong>Bathroom</strong></th>
+        <th><strong>Status</strong></th>
+        <th><strong>Rules</strong></th>
+        <th><strong>Action</strong></th>
+        <tr th:each="i:${unavalibleListings}">
+            <td th:text="${i.id}"></td>
+            <td th:text="${i.description}"></td>
+            <td th:text="${i.wifi}"></td>
+            <td th:text="${i.cable}"></td>
+            <td th:text="${i.bathroom}"></td>
+            <td th:text="${i.rented}"></td>
+            <td th:text="${i.rules}"></td>
+            <td>
+                <a th:href="@{/update/{id} (id=${i.id})}">Update</a> - <a th:href="@{/delete/{id} (id=${i.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+
+<form action="/add">
+    <input type="submit" value="Add Listing"/>
+</form>
+
+
 </body>
 </html>
