@@ -3,64 +3,112 @@
 <head lang="en">
     <meta charset="UTF-8"/>
     <title>Add Listings</title>
+    <th:block th:replace="base::header"></th:block>
 </head>
 <body>
-    <h1 th:if="${isNew}? 'Add Listing':'Update Listing'"></h1>
-
-    <h1>Add Listing</h1>
-    <form action="#"
-
-          th:action="@{/process/{id} (id=${aHouse.id})}"
-          th:object="${aHouse}"
-    >
-
-        <!--hidden id input-->
-        <input type="hidden" th:field="*{id}"/>
-
-        <ul>
-            <label for="descriptionTextArea">D3scription: </label>
-            <textarea id="descriptionTextArea" cols="50" rows="2" maxlength="140" th:field="*{description}"/>
-            <span th:if="${#fields.hasErrors('description')}"
-                  th:errors="*{description}"></span><br />
-        </ul>
-        <ul>
-            Has Wifi: <select th:field="*{wifi}">
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select>
-        </ul>
-
-        <ul>
-            <label for="rulesTextArea">Ru1es: </label>
-            <textarea id="rulesTextArea" cols="50" rows="4"  th:field="*{rules}"/>
-            <span th:if="${#fields.hasErrors('rules')}"
-                  th:errors="*{rules}"></span><br />
-        </ul>
-        <ul>
-            Cable: <select th:field="*{cable}">
-            <option value="None">None</option>
-            <option value="Basic">Basic</option>
-            <option value="Premium">Premium</option>
-        </select>
-        </ul>
-        <ul>
-            Private Bathroom:<select th:field="*{bathroom}">
-            <option value="No">No</option>
-            <option value="Yes">Yes</option>
-        </select>
-        </ul>
-        <ul>
-            <h3>Is Avalible for rent:<select th:field="*{rented}">
-                <option value="Avalible">Avalible</option>
-                <option value="Unavalible">Unavalible</option>
-            </select>
-            </h3>
-        </ul>
+    <!--nav bar and css components-->
+    <div th:replace="base :: navigation"></div>
 
 
-        <Input type="submit" value="Continue"/><Input type="reset" value="Clear Form"/>
-    </form>
+    <div class="container" style="border: 2px solid black">
+        <h1>Add or Update enteries here</h1>
+
+        <form action="#"
+              th:action="@{/process/{id} (id=${aHouse.id})}"
+              th:object="${aHouse}">
+            <fieldset>
+                <!--Form name-->
+                <legend th:text="${isNew}? 'Add Listing':'Update Listing'">></legend>
 
 
+                <!--hidden id input-->
+                <input type="hidden" th:field="*{id}"/>
+
+                <!--home description-->
+                <div class="form-group">
+                    <label class="col-md control-label">Description</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <!--<span class="input-group-addon" id="basic-addon1"></span>-->
+                            <textarea id="descriptionTextArea" cols="50" rows="2" maxlength="140" th:field="*{description}"/>
+                            <span th:if="${#fields.hasErrors('description')}"
+                                  th:errors="*{description}"></span><br />
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--Free wifi-->
+                <div class="form-group">
+                    <label class="col-md control-label">Free Wifi</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <select th:field="*{wifi}">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                    <label class="col-md control-label">Cable</label>
+                </div>
+
+                <!--Cable-->
+                <div class="form-group">
+                    <label class="col-md control-label">Cable</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <select th:field="*{cable}">
+                            <option value="None">None (cable cutter)</option>
+                            <option value="Basic">Basic</option>
+                            <option value="Premium">Premium</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Private Bathroom-->
+                <div class="form-group">
+                    <label class="col-md control-label">Private Bathroom</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <select th:field="*{bathroom}">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Home Rules-->
+                <div class="form-group">
+                    <label class="col-md control-label">Rules</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <textarea id="rulesTextArea" cols="50" rows="4"  th:field="*{rules}"/>
+                        <span th:if="${#fields.hasErrors('rules')}"
+                              th:errors="*{rules}"></span><br />
+                    </div>
+                </div>
+
+                <!--room avalability-->
+                <div class="form-group">
+                    <label class="col-md control-label">Avalability</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <select th:field="*{rented}">
+                            <option value="Avalible">Avalible</option>
+                            <option value="Unavalible">Unavalible</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!--Button: Save or update entry-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button id="buttonSubmit" type="submit" class="btn btn-warning">Save <span class="glyphicon glyphicon-send"></span></button>
+                        <button id="buttonReset" type="reset" class="btn btn-warning">Clear <span class="glyphicon glyphicon-send"></span></button>
+
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+    <th:block th:replace="base::footer"></th:block>
 </body>
 </html>

@@ -1,0 +1,5 @@
+#buttonHome , #buttonAdd, #buttonShowAll, #buttonShowAvalible {
+    display:inline-block;
+    /**other codes**/
+}
+body { padding-top: 20px; }
