@@ -37,6 +37,10 @@ public class MainController {
         houseRepository.save(aHouse);
         return "redirect:/showListings";
     }
+    @RequestMapping("/test")
+    public String testPage(){
+        return "test";
+    }
 
 
     @RequestMapping("/showListings")
