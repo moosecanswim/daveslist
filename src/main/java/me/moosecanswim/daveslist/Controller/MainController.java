@@ -55,6 +55,9 @@ public class MainController {
         model.addAttribute("unavalibleListings",tempFindUnavalible);
         return "showListings";
     }
+
+
+    //Here are my helper functions
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id){
         houseRepository.delete(id);
@@ -67,6 +70,27 @@ public class MainController {
         return "listingForm";
     }
 
+
+
+    //Admin Stuff
+    @RequestMapping("/admin")
+    public String adminDash(Model model){
+        Iterable<House> tempFindAll = houseRepository.findAll();
+        model.addAttribute("allListings",tempFindAll);
+        return "Admin/adminDash";
+    }
+    //renter stuff
+    @RequestMapping("/renter")
+    public String renterDash(){
+        return "renterDash";
+    }
+    //Seeker Stuff
+    @RequestMapping("/seeker")
+    public String seekerDash(Model model){
+        Iterable<House> tempAvalible = houseRepository.findByRented("Avalible");
+        model.addAttribute("avalibleListings",tempAvalible);
+        return "Seeker/seekerDash";
+    }
 
 
 

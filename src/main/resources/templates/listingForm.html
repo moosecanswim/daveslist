@@ -13,7 +13,8 @@
     <div class="container" style="border: 2px solid black">
         <h1>Add or Update enteries here</h1>
 
-        <form action="#"
+        <form class="well form-horizontal"
+                action="#"
               th:action="@{/process/{id} (id=${aHouse.id})}"
               th:object="${aHouse}">
             <fieldset>
@@ -26,10 +27,9 @@
 
                 <!--home description-->
                 <div class="form-group">
-                    <label class="col-md control-label">Description</label>
+                    <label class="col-md-4 control-label">Description</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
-                            <!--<span class="input-group-addon" id="basic-addon1"></span>-->
                             <textarea id="descriptionTextArea" cols="50" rows="2" maxlength="140" th:field="*{description}"/>
                             <span th:if="${#fields.hasErrors('description')}"
                                   th:errors="*{description}"></span><br />
@@ -40,7 +40,7 @@
 
                 <!--Free wifi-->
                 <div class="form-group">
-                    <label class="col-md control-label">Free Wifi</label>
+                    <label class="col-md-4 control-label">Free Wifi</label>
                     <div class="col-md-4 inputGroupContainer">
                         <select th:field="*{wifi}">
                             <option value="Yes">Yes</option>
@@ -53,7 +53,7 @@
 
                 <!--Cable-->
                 <div class="form-group">
-                    <label class="col-md control-label">Cable</label>
+                    <label class="col-md-4 control-label">Cable</label>
                     <div class="col-md-4 inputGroupContainer">
                         <select th:field="*{cable}">
                             <option value="None">None (cable cutter)</option>
@@ -65,7 +65,7 @@
 
                 <!--Private Bathroom-->
                 <div class="form-group">
-                    <label class="col-md control-label">Private Bathroom</label>
+                    <label class="col-md-4 control-label">Private Bathroom</label>
                     <div class="col-md-4 inputGroupContainer">
                         <select th:field="*{bathroom}">
                             <option value="No">No</option>
@@ -76,7 +76,7 @@
 
                 <!--Home Rules-->
                 <div class="form-group">
-                    <label class="col-md control-label">Rules</label>
+                    <label class="col-md-4 control-label">Rules</label>
                     <div class="col-md-4 inputGroupContainer">
                         <textarea id="rulesTextArea" cols="50" rows="4"  th:field="*{rules}"/>
                         <span th:if="${#fields.hasErrors('rules')}"
@@ -86,7 +86,7 @@
 
                 <!--room avalability-->
                 <div class="form-group">
-                    <label class="col-md control-label">Avalability</label>
+                    <label class="col-md-4 control-label">Avalability</label>
                     <div class="col-md-4 inputGroupContainer">
                         <select th:field="*{rented}">
                             <option value="Avalible">Avalible</option>

@@ -10,82 +10,91 @@
     <div th:replace="base :: navigation"></div>
 
     <div class="container">
-        <h2>All listings</h2>
-        <table border="1" width="80%">
 
-            <th width="5%"><strong>ID</strong></th>
-            <th width="20"><strong>Description</strong></th>
-            <th width="5%"><strong>Wifi</strong></th>
-            <th width="5%"><strong>Cable</strong></th>
-            <th width="5%"><strong>Bathroom</strong></th>
-            <th width="10%"><strong>Status</strong></th>
-            <th width="30%"><strong>Rules</strong></th>
-            <th width="10%"><strong>Action</strong></th>
+        <p>Here you can see all listings and their status, <a href="/add"><strong>add</strong></a> and update them</p>
+        <br />
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>All listings</h2></div>
+            <table class="table">
 
-            <tr th:each="i:${allListings}">
-                <td th:text="${i.id}"></td>
-                <td th:text="${i.description}"></td>
-                <td th:text="${i.wifi}"></td>
-                <td th:text="${i.cable}"></td>
-                <td th:text="${i.bathroom}"></td>
-                <td th:text="${i.rented}"></td>
-                <td th:text="${i.rules}"></td>
+                <th><strong>ID</strong></th>
+                <th><strong>Description</strong></th>
+                <th><strong>Wifi</strong></th>
+                <th><strong>Cable</strong></th>
+                <th><strong>Bathroom</strong></th>
+                <th><strong>Status</strong></th>
+                <th><strong>Rules</strong></th>
+                <th> <strong>Action</strong></th>
 
-                <td>
-                    <a th:href="@{/update/{id} (id=${i.id})}">Update</a> - <a th:href="@{/delete/{id} (id=${i.id})}">Delete</a>
-                </td>
-            </tr>
-        </table>
+                <tr th:each="i:${allListings}">
+                    <td th:text="${i.id}"></td>
+                    <td th:text="${i.description}"></td>
+                    <td th:text="${i.wifi}"></td>
+                    <td th:text="${i.cable}"></td>
+                    <td th:text="${i.bathroom}"></td>
+                    <td th:text="${i.rented}"></td>
+                    <td th:text="${i.rules}"></td>
 
-        <h2>Avalible Homes</h2>
+                    <td>
+                        <a th:href="@{/update/{id} (id=${i.id})}">Update</a> - <a th:href="@{/delete/{id} (id=${i.id})}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-        <table border="1" width="80%">
-            <th width="5%"><strong>ID</strong></th>
-            <th width="20"><strong>Description</strong></th>
-            <th width="5%"><strong>Wifi</strong></th>
-            <th width="5%"><strong>Cable</strong></th>
-            <th width="5%"><strong>Bathroom</strong></th>
-            <th width="10%"><strong>Status</strong></th>
-            <th width="30%"><strong>Rules</strong></th>
-            <th width="10%"><strong>Action</strong></th>
-            <tr th:each="i:${avalibleListings}">
-                <td th:text="${i.id}"></td>
-                <td th:text="${i.description}"></td>
-                <td th:text="${i.wifi}"></td>
-                <td th:text="${i.cable}"></td>
-                <td th:text="${i.bathroom}"></td>
-                <td th:text="${i.rented}"></td>
-                <td th:text="${i.rules}"></td>
-                <td>
-                    <a th:href="@{/update/{id} (id=${i.id})}">Update</a> - <a th:href="@{/delete/{id} (id=${i.id})}">Delete</a>
-                </td>
-            </tr>
-        </table>
 
-        <h2>Unavalible Homes</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>Avalible Homes</h2></div>
+            <table class="table">
+                <th><strong>ID</strong></th>
+                <th><strong>Description</strong></th>
+                <th><strong>Wifi</strong></th>
+                <th><strong>Cable</strong></th>
+                <th><strong>Bathroom</strong></th>
+                <th><strong>Status</strong></th>
+                <th><strong>Rules</strong></th>
+                <th> <strong>Action</strong></th>
+                <tr th:each="i:${avalibleListings}">
+                    <td th:text="${i.id}"></td>
+                    <td th:text="${i.description}"></td>
+                    <td th:text="${i.wifi}"></td>
+                    <td th:text="${i.cable}"></td>
+                    <td th:text="${i.bathroom}"></td>
+                    <td th:text="${i.rented}"></td>
+                    <td th:text="${i.rules}"></td>
+                    <td>
+                        <a th:href="@{/update/{id} (id=${i.id})}">Update</a> - <a th:href="@{/delete/{id} (id=${i.id})}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-        <table border="1" width="80%">
-            <th width="5%"><strong>ID</strong></th>
-            <th width="20"><strong>Description</strong></th>
-            <th width="5%"><strong>Wifi</strong></th>
-            <th width="5%"><strong>Cable</strong></th>
-            <th width="5%"><strong>Bathroom</strong></th>
-            <th width="10%"><strong>Status</strong></th>
-            <th width="30%"><strong>Rules</strong></th>
-            <th width="10%"><strong>Action</strong></th>
-            <tr th:each="i:${unavalibleListings}">
-                <td th:text="${i.id}"></td>
-                <td th:text="${i.description}"></td>
-                <td th:text="${i.wifi}"></td>
-                <td th:text="${i.cable}"></td>
-                <td th:text="${i.bathroom}"></td>
-                <td th:text="${i.rented}"></td>
-                <td th:text="${i.rules}"></td>
-                <td>
-                    <a th:href="@{/update/{id} (id=${i.id})}">Update</a> - <a th:href="@{/delete/{id} (id=${i.id})}">Delete</a>
-                </td>
-            </tr>
-        </table>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>Unavalible Homes</h2></div>
+            <table class="table">
+                <th><strong>ID</strong></th>
+                <th><strong>Description</strong></th>
+                <th><strong>Wifi</strong></th>
+                <th><strong>Cable</strong></th>
+                <th><strong>Bathroom</strong></th>
+                <th><strong>Status</strong></th>
+                <th><strong>Rules</strong></th>
+                <th> <strong>Action</strong></th>
+                <tr th:each="i:${unavalibleListings}">
+                    <td th:text="${i.id}"></td>
+                    <td th:text="${i.description}"></td>
+                    <td th:text="${i.wifi}"></td>
+                    <td th:text="${i.cable}"></td>
+                    <td th:text="${i.bathroom}"></td>
+                    <td th:text="${i.rented}"></td>
+                    <td th:text="${i.rules}"></td>
+                    <td>
+                        <a th:href="@{/update/{id} (id=${i.id})}">Update</a> - <a th:href="@{/delete/{id} (id=${i.id})}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
 
     </div>
     <th:block th:replace="base::footer"></th:block>
